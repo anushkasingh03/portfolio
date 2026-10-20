@@ -11,9 +11,6 @@ npm run build && npm start
 ```
 Requires Node 18.17+. Fonts (Newsreader, Hanken Grotesk, JetBrains Mono) are fetched from Google Fonts at build time, so the build needs internet access.
 
-## Add your photo
-Save your portrait as `public/images/anushka.jpg` (4:5 ratio, about 800x1000). A placeholder shows until the file exists.
-
 ## Update content
 All content lives in `data/`. Do not edit components to change text.
 
@@ -34,8 +31,3 @@ The theme is a word-game palette: tile colors green, yellow, gray (`absent`) and
 
 **GitHub Pages (static):** add `output: "export"` and `images: { unoptimized: true }` to `next.config.mjs`, run `npm run build`, and publish `out/`. Set `basePath` if serving from `/repo-name`.
 
-## Before publishing
-- Swap `public/resume.pdf` whenever your résumé changes (the Resume buttons open it).
-- Projects can take optional `highlights`, `challenges` and `links` in `data/projects.ts`. Fill them only with real data.
-- Add an Open Graph image at `app/opengraph-image.png` (1200x630).
-- Add `href` links to projects and publications.
