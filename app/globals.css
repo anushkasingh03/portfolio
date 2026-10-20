@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Word-game palette: green = correct, yellow = present, absent = gray, key = keyboard key */
+:root {
+  --bg: #ffffff; --ink: #121213; --muted: #6b6f72; --line: #d3d6da; --accent: #4a7f46;
+  --green: #4a7f46; --yellow: #c9b458; --key: #d3d6da; --absent: #6b6f72;
+}
+html { scroll-behavior: smooth; background: var(--bg); }
+body { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: #fff; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+section[id] { scroll-margin-top: 4rem; }
+
+/* Tile states. Each sets the colors a tile ends up with. */
+.tile-green  { --final: var(--green);  --ftext: #fff;       background: var(--final); border-color: var(--final); color: var(--ftext); }
+.tile-yellow { --final: var(--yellow); --ftext: var(--ink); background: var(--final); border-color: var(--final); color: var(--ftext); }
+.tile-absent { --final: var(--absent); --ftext: #fff;       background: var(--final); border-color: var(--final); color: var(--ftext); }
+.tile-key    { --final: var(--key);    --ftext: var(--ink); background: var(--final); border-color: var(--final); color: var(--ftext); }
+
+/* The one orchestrated moment: the name's letter tiles flip into their colors on load */
+.tile-flip { animation: flip .7s ease-in-out backwards; animation-delay: var(--d, 0ms); }
+
+/* Gentle hover: tiles lift and flip to yellow, like a letter marked "present" */
+.tile-hover { transition: transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease; }
+.tile-hover:hover { transform: translateY(-3px); background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+/* Skill tiles turn green on hover */
+.skill-tile { transition: transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease; }
+.skill-tile:hover { background: var(--green); border-color: var(--green); color: #fff; transform: translateY(-2px); }
+/* Tactile buttons */
+.press { transition: transform .15s ease, background-color .2s ease, color .2s ease, text-decoration-color .2s ease; }
+.press:hover { transform: translateY(-2px); }
+.press:active { transform: translateY(1px) scale(.98); }
+@keyframes flip {
+  0%   { transform: rotateX(0);     background: #fff; border-color: var(--line); color: var(--ink); }
+  49%  { transform: rotateX(90deg); background: #fff; border-color: var(--ink);  color: var(--ink); }
+  50%  { transform: rotateX(90deg); background: var(--final); border-color: var(--final); color: var(--ftext); }
+  100% { transform: rotateX(0);     background: var(--final); border-color: var(--final); color: var(--ftext); }
+}
+
+.rise { opacity: 0; animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Reacts to a click on a project tab */
+.panel-in { animation: panel .4s cubic-bezier(.2,.7,.2,1); }
+@keyframes panel { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tile-flip, .rise, .panel-in { animation: none; opacity: 1; }
+  .tile-hover:hover, .skill-tile:hover, .press:hover, .press:active { transform: none; }
+  * { transition-duration: 0s !important; }
+}
