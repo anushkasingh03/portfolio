@@ -7,7 +7,7 @@ export const profile = {
   // Empty strings are hidden automatically. The Resume buttons open /public/resume.pdf.
   links: {
     linkedin: "https://www.linkedin.com/in/anushkasingh03/",
-    github: "", // add https://github.com/anushkasingh03 to show the GitHub button
+    github: "https://github.com/anushkasingh03",
     resume: "/resume.pdf",
   },
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",

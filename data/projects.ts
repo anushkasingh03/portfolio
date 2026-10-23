@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "Dequantizing on the fly cost speed: 6.75 to 4.47 tokens/s.",
       "Eviction alone saved ~4× but perplexity jumped to 132.08.",
     ],
-    links: [{ label: "Code", href: "https://github.com/anushrisuresh/kv-quantization" }],
+    links: [{ label: "Code", href: "https://github.com/anushkasingh03/kv-quantization" }],
   },
   {
     id: "fraud-gnn",
@@ -56,6 +56,7 @@ export const projects: Project[] = [
       "Keeping false positives low while flagging in real time.",
       "Getting sub-second inference out of a graph model.",
     ],
+    links: [{ label: "Code", href: "https://github.com/anushkasingh03/gnn-fraud-detection" }],
   },
   {
     id: "body-image",
