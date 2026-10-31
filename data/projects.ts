@@ -38,26 +38,46 @@ export const projects: Project[] = [
     links: [{ label: "Code", href: "https://github.com/anushkasingh03/kv-quantization" }],
   },
   {
-    id: "fraud-gnn",
-    tab: "Fraud detection",
-    blurb: "Graph model, sub-second inference",
-    title: "Graph neural networks for real-time fraud detection",
-    stack: ["Python", "GNNs", "GANs", "AWS Lambda"],
-    problem: "Fraud checks have to run live without flooding analysts with false alarms.",
-    approach: "I built a generative adversarial graph network for transaction fraud and served it on AWS Lambda.",
-    outcome: "40% fewer false positives, and answers in under a second.",
-    metrics: [{ value: "−40%", label: "false positives" }, { value: "<1s", label: "inference" }],
-    highlights: [
-      "A generative adversarial graph network over financial transactions.",
-      "Served through AWS Lambda for real-time flagging.",
-      "Judged on false positives and inference latency.",
-    ],
-    challenges: [
-      "Keeping false positives low while flagging in real time.",
-      "Getting sub-second inference out of a graph model.",
-    ],
-    links: [{ label: "Code", href: "https://github.com/anushkasingh03/gnn-fraud-detection" }],
-  },
+  id: "fraud-gnn",
+  tab: "Fraud detection",
+  blurb: "GraphSAGE fraud detection · 40%+ fewer false positives",
+  title: "Graph neural networks for real-time fraud detection",
+  stack: ["Python", "GraphSAGE", "GANs", "ONNX"],
+
+  problem:
+    "Traditional fraud detection models often overlook relationships between transactions, leading to missed patterns and unnecessary false positives.",
+
+  approach:
+    "Built a GraphSAGE-based fraud detection pipeline to learn transaction patterns through graph neighborhood aggregation. Incorporated GAN-based data augmentation and optimized classification thresholds to reduce false positives. Used ONNX for efficient local inference.",
+
+  outcome:
+  "Reduced false-positive rates by over 40% through threshold optimization, with sub-second local inference using ONNX.",
+  
+  metrics: [
+    { value: ">40%", label: "fewer false positives" },
+    { value: "<1s", label: "local inference" }
+  ],
+
+  highlights: [
+    "Implemented GraphSAGE to capture relational patterns through neighborhood aggregation.",
+    "Used GAN-based data augmentation to improve training data diversity.",
+    "Optimized classification thresholds to reduce false-positive predictions.",
+    "Used ONNX for efficient, sub-second local model inference."
+  ],
+
+  challenges: [
+    "Capturing complex relationships between transactions while maintaining reliable fraud classification.",
+    "Reducing false positives without compromising fraud detection performance.",
+    "Optimizing graph model inference for low-latency predictions."
+  ],
+
+  links: [
+    {
+      label: "Code",
+      href: "https://github.com/anushkasingh03/gnn-fraud-detection"
+    }
+  ]
+},
   {
     id: "body-image",
     tab: "Body image game",
